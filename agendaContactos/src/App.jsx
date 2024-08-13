@@ -1,33 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
+import { useState } from 'react'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [nombre, setNombre] = useState('')
+  const [contactos, setContactos] = useState([])
+  const [num, setNum] = useState(0)
+
+const updateNombre = (input) => {
+  setNombre(input.target.value)
+  console.log(nombre)
+}
+
+const updateNum = (input) => {
+  setNum(input.target.value)
+  console.log(num);
+
+}
+
+const agendar = () => {
+  setContactos([...contactos, {nombre: nombre, num: num}])
+  console.log('agendados');
+  console.log(contactos)
+
+}
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Agendar contactos</h1>
+      <div className="containerInput">
+        <input onChange={updateNombre} type="text" />
+        <input onChange={updateNum} type="number" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button onClick={agendar}> + </button>
     </>
   )
 }
