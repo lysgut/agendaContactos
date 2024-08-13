@@ -35,6 +35,17 @@ const agendar = () => {
         <input onChange={updateNum} type="number" />
       </div>
       <button onClick={agendar}> + </button>
+      <div className="contactList">
+        <h2>Lista de Contactos</h2>
+        <ul>
+          {contactos.map((contacto, index) => (
+            <li key={index}>
+              <span>{contacto.nombre}: {contacto.num}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
     </>
   )
 }
